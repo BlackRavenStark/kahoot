@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Kahoot</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            background: url('https://blackravenstark.github.io/kahoot/ft.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .button-container { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+            margin-top: auto;
+            padding-bottom: 50px;
+        }
+        .btn { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            border: none; 
+            background: linear-gradient(45deg, #d4af37, #b8860b);
+            color: white; 
+            border-radius: 10px;
+            transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            gap: 10px;
+            width: 100%;
+        }
+        .btn img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .btn:hover { 
+            background: linear-gradient(45deg, #c9a227, #a47400);
+            transform: scale(1.1);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button class="btn" onclick="openModal('https://kahoot.it/challenge/003753342')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/1024px-Burger_King_2020.svg.png" alt="BK Logo"> BK CHAURAY
+        </button>
+        <button class="btn" onclick="openModal('https://kahoot.it/challenge/003334849')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/1024px-Burger_King_2020.svg.png" alt="BK Logo"> BK COGNAC
+        </button>
+    </div>
+</body>
+</html>
