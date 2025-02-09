@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Kahoot</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            background: url('https://blackravenstark.github.io/kahoot/ft.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+            padding-bottom: 50px;
+            margin-top: 10cm;
+        }
+
+        .first-button {
+    display: flex;
+    justify-content: center;
+    width: auto; /* Le bouton reste centré sans s'étendre */
+}
+
+.first-button .btn {
+    width: auto; /* Ajuste la taille au contenu */
+    min-width: 150px; /* Taille minimale */
+}
+
+        .button-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .btn { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            border: none; 
+            background: linear-gradient(45deg, #d4af37, #b8860b);
+            color: white; 
+            border-radius: 10px;
+            transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            gap: 10px;
+            width: 100%;
+        }
+        .btn img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .btn:hover { 
+            background: linear-gradient(45deg, #c9a227, #a47400);
+            transform: scale(1.1);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            height: 80%;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .modal-content iframe {
+            flex-grow: 1;
+            border: none;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            background: red;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        @media screen and (max-width: 768px) {
+    .button-container {
+        margin-top: 11cm;
+        gap: 10px;
+    }
+
+    .first-button {
+        width: 100%; /* Assure que le bouton reste centré */
+        display: flex;
+        justify-content: center;
+    }
+
+    .first-button .btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .button-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Passe de 4 colonnes à 2 */
+        gap: 10px;
+        width: 100%;
+    }
+
+            .modal-content {
+                width: 95%;
+                height: 85%;
+            }
+        }
+    
+
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <div class="first-button">
+            <button class="btn" onclick="openModal('https://kahoot.it/challenge/003639933')">
+                <img src="https://blackravenstark.github.io/kahoot/azur.png" alt="AZUR Logo"> AZUR
+            </button>
+        </div>
+            <div class="button-row">
+                <button class="btn" onclick="openModal('https://kahoot.it/challenge/009984817')">
+                    <img src="https://blackravenstark.github.io/kahoot/bg2.png" alt="BG Logo"> BG BERGERAC
+                </button>
+                <button class="btn" onclick="openModal('https://kahoot.it/challenge/00138849')">
+                    <img src="https://blackravenstark.github.io/kahoot/bg2.png" alt="BG Logo"> BG LIBOURNE
+                </button>
+                <button class="btn" onclick="openModal('https://kahoot.it/challenge/003738421')">
+                    <img src="https://blackravenstark.github.io/kahoot/bg2.png" alt="BG Logo"> BG ST ANDRE
+                </button>
+                <button class="btn" onclick="openModal('https://kahoot.it/challenge/003957556')">
+                    <img src="https://blackravenstark.github.io/kahoot/bg2.png" alt="BG Logo"> BG BIGANOS
+                </button>
+            </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">X</button>
+            <iframe id="kahootFrame" src="" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+    <script>
+        function openModal(url) {
+            var modal = document.getElementById('modal');
+            var iframe = document.getElementById('kahootFrame');
+            if (modal && iframe) {
+                iframe.src = url;
+                modal.style.display = 'flex';
+            }
+        }
+        function closeModal() {
+            var modal = document.getElementById('modal');
+            var iframe = document.getElementById('kahootFrame');
+            if (modal && iframe) {
+                modal.style.display = 'none';
+                iframe.src = '';
+            }
+        }
+    </script>
+<p style="margin-top: 20px; font-size: 18px; color: white; text-align: center;">Veuillez cliquer sur le bouton correspondant à votre promo, puis entrez votre nom et prénom avant de lancer le quiz.</p>
+
+</body>
+</html>
