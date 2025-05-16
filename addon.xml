@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>visual_search_helper</id>
+    <version>1.0</version>
+    <name>Visual Search Helper</name>
+    <description>Ajoute une analyse IA à l'upload de photo produit</description>
+    <priority>100</priority>
+</addon>
